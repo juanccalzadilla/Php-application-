@@ -29,7 +29,7 @@ class Jugador
 
             return $result;
         } else {
-            return "Error";
+            return false;
         }
     }
 

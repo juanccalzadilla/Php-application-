@@ -9,6 +9,9 @@ $cache = '../cache';
 $blade = new BladeOne($views, $cache);
 $bd = new BD();
 $result = Jugador::recuperarJugadores($bd);
+if (!$result) {
+    header('Location:crearDatos.php');
+}
 
 
 
@@ -16,4 +19,4 @@ $d = new DNS1D();
 $d->setStorPath(__DIR__.'/cache/');
 
 
-echo $blade->run('jugadores',array('jugadores' => $result,'barcode'=>$d,'message'=>$resultado));
+echo $blade->run('jugadores',array('jugadores' => $result,'barcode'=>$d));
