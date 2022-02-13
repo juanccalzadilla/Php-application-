@@ -1,0 +1,21 @@
+{
+    "name": "34610/try-project",
+    "type": "project",
+    "license": "GLP",
+    "autoload": {
+        "psr-4": {
+            "34610\\TryProject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juan Calzadilla",
+            "email": "juancalza91@gmail.com"
+        }
+    ],
+    "require": {
+        "eftec/bladeone": "^4.4",
+        "fakerphp/faker": "^1.19",
+        "milon/barcode": "^8.0"
+    }
+}
