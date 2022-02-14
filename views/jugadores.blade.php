@@ -20,7 +20,11 @@
             <th scope="row">{{$jugador['id']}}</th>
             <td>{{$jugador['nombre']}}</td>
             <td>{{$jugador['apellidos']}}</td>
+            @if($jugador['dorsal'] == null)
+            <td>Sin asignar</td>
+            @else
             <td>{{$jugador['dorsal']}}</td>
+            @endif
             <td>{{$jugador['posicion']}}</td>
             <td>
                 @php 

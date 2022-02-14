@@ -33,25 +33,37 @@ class Jugador
         }
     }
 
-    public static function recuperarPosiciones(){
-      
-        $poss = array ("1" => "Portero","2" =>"Defensa","3" =>"Lateral Izquiero","4" =>"Lateral Derecho", "5" =>"Central","6" =>"Delantero");
-        return $poss;
+    public static function recuperarPosiciones()
+    {
 
+        $poss = array("1" => "Portero", "2" => "Defensa", "3" => "Lateral Izquiero", "4" => "Lateral Derecho", "5" => "Central", "6" => "Delantero");
+        return $poss;
     }
 
     public function crearJugador($bd)
     {
-        if ($this->nombre && $this->apellidos && $this->posicion && $this->dorsal) {
+        if ($this->nombre && $this->apellidos && $this->posicion) {
             $bd = $bd->getConexion();
             $v = $bd->prepare('select dorsal from jugadores');
             $r = $v->execute();
             try {
-                if (!in_array($r, $this->dorsal)) {
+                if ($this->dorsal != 0) {
+
+                    if (!in_array($r, $this->dorsal)) {
+                        $sql = 'insert into jugadores (nombre,apellidos,dorsal,posicion,barcode) values (:nombre,:apellidos,:dorsal,:posicion,:barcode)';
+                        $stm = $bd->prepare($sql);
+                        $result = $stm->execute([":nombre" => $this->nombre, ":apellidos" => $this->apellidos, ":dorsal" => $this->dorsal, ":posicion" => $this->posicion, ":barcode" => $this->barcode]);
+
+                        if ($result) {
+                            return 'Creado';
+                        } else {
+                            return 'No creado';
+                        }
+                    }
+                }else{
                     $sql = 'insert into jugadores (nombre,apellidos,dorsal,posicion,barcode) values (:nombre,:apellidos,:dorsal,:posicion,:barcode)';
                     $stm = $bd->prepare($sql);
-                    $result = $stm->execute([":nombre" => $this->nombre, ":apellidos" => $this->apellidos, ":dorsal" => $this->dorsal, ":posicion" => $this->posicion, ":barcode" => $this->barcode]);
-
+                    $result = $stm->execute([":nombre" => $this->nombre, ":apellidos" => $this->apellidos, ":dorsal" => null, ":posicion" => $this->posicion, ":barcode" => $this->barcode]);
                     if ($result) {
                         return 'Creado';
                     } else {
@@ -59,7 +71,7 @@ class Jugador
                     }
                 }
             } catch (PDOException $e) {
-                return 'Error: El dorsal ya existe'; 
+                return 'Error: El dorsal ya existe';
             }
         } else {
             return 'Faltan datos';
