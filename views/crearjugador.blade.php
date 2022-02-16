@@ -2,8 +2,9 @@
 @section('title','Nuevo Jugador')
 @section('cabecera','Crear Jugador')
 @section('contenido')
-
+@if($result)
 <div class="alert alert-warning">{{$result}}</div>
+@endif
 <form method="post" action="../src/crearJugador.php">
   <div class="d-flex">
     <div class="m-3 w-50">

@@ -11,6 +11,7 @@ $faker = Faker\Factory::create();
 $bd = new BD();
 $barcode = $faker->ean13();
 $poss = Jugador::recuperarPosiciones();
+$resultado = null;
  if (isset($_REQUEST['submit'])) {
     if (!empty($_REQUEST['nombre']) && !empty($_REQUEST['apellidos']) && !empty($_REQUEST['posicion'])) {
         $nombre  = $_REQUEST['nombre'];
@@ -20,6 +21,12 @@ $poss = Jugador::recuperarPosiciones();
         $b = $_REQUEST['barcode'];
         $j = new Jugador($nombre,$apellidos,$posicion,$dorsal,$b);
         $resultado = $j->crearJugador($bd);
+        if ($resultado) {
+            header('Location:index.php?created=true');
+        }else
+        {
+            $resultado = 'El dorsal '. $dorsal . ' ya existe' ;
+        }
     }else{
         $resultado = "Todos los campos deben estar rellenos";
     }

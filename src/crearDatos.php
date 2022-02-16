@@ -9,6 +9,7 @@ $blade = new BladeOne($views, $cache);
 $faker = Faker\Factory::create();
 $bd = new BD();
 $count = Jugador::recuperarJugadores($bd);
+$result = null;
 for ($i=0; $i < 5; $i++) { 
     if(isset($_REQUEST['submit'])){
         $nombre  = $faker->name();

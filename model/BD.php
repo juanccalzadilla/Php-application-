@@ -1,7 +1,7 @@
 <?php
 
 class BD {
-
+// Creacion de la base de datos, la variable bd es la que se retorna con el metodo getConexion();
     protected static $bd = null;
     const DB_HOST = 'localhost';
     // const DB_PORT = '3306';

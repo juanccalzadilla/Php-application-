@@ -2,6 +2,18 @@
 @section('title','Lista de jugadores')
 @section('cabecera','Jugadores')
 @section('contenido')
+@if(isset($_REQUEST['created']))
+<!-- <div class="alert alert-success">Jugador Creado</div> -->
+<script>
+    Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Jugador Creado',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
 <a href="../src/crearJugador.php" class="btn btn-success w-100 m-2">Crear nuevo jugador</a>
 <table class="table table-primary">
     <thead>
