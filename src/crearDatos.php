@@ -10,6 +10,7 @@ $faker = Faker\Factory::create();
 $bd = new BD();
 $count = Jugador::recuperarJugadores($bd);
 $result = null;
+// Con este ciclo al darle se crearan 5 jugadores de inicializacion 
 for ($i=0; $i < 5; $i++) { 
     if(isset($_REQUEST['submit'])){
         $nombre  = $faker->name();
@@ -22,6 +23,7 @@ for ($i=0; $i < 5; $i++) {
         header('Location:index.php');
     }
 }
+// Si alguien intenta entrar y hay algo en la base de datos, se envia directamente al index
 if ($count > 0) {
     header('Location:index.php');
 };
