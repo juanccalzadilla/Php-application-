@@ -13,6 +13,17 @@
   timer: 1500
 })
 </script>
+@elseif(isset($_REQUEST['init']))
+<script>
+    Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Datos creados',
+  text:'Los datos de pruebas se han creado correctamente, disfruta la app',
+  showConfirmButton: false,
+  timer: 2500
+})
+</script>
 @endif
 <a href="../src/crearJugador.php" class="btn btn-success w-100 m-2">Crear nuevo jugador</a>
 <table class="table table-primary">

@@ -51,7 +51,7 @@ class Jugador
             $bd = $bd->getConexion();
             // Recupero todo los dorsales para la comprobacion de la linea 63
             $v = $bd->prepare('select dorsal from jugadores');
-            $r = $v->execute();
+            $v->execute();
             try {
                 // Este if se ejecuta siempre que el dorsal no este vacio, sino se ejecuta else que contiene la consulta pero enviando 
                 // la variable dorsal como null 

@@ -20,7 +20,7 @@ for ($i=0; $i < 5; $i++) {
         $barcode = $faker->ean13();
         $jugador = new Jugador($nombre,$apellidos,$posicion,$dorsal,$barcode);
         $result = $jugador->crearJugador($bd);
-        header('Location:index.php');
+        header('Location:index.php?init=true');
     }
 }
 // Si alguien intenta entrar y hay algo en la base de datos, se envia directamente al index
