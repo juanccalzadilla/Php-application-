@@ -1,12 +1,12 @@
 # Soccer Players App 
 
-Its a php app using POO and the view engine BladeOne, also use many extern libraries like barcode for 
-generate barcodes for each player and the faker app to generate ramdom data.
+Its a php app using POO and the view engine BladeOne, also use many extern libraries like barcode to 
+generate barcodes for each player and the faker app to generate ramdon data.
 
 ## 🛠 Skills
 PHP ,Javascript, HTML, Bootstrap, MySQL
 
-All dependencies are available in package.json
+All dependencies are available in composer.json
 
 ## Screenshots
 
